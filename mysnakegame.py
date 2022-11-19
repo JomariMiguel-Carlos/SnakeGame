@@ -1,3 +1,12 @@
+#print ("**********      PROGRAMMED BY      **********")
+#print ("**********  CARLOS, JOMARI MIGUEL  **********")
+#print ("**********        BSCOE 2-2        **********")
+#print ("********** Sir Danilo Madrigalejos **********")
+
+#Program inspiration
+#https://www.geeksforgeeks.org/create-a-snake-game-using-turtle-in-python/
+
+
 #import modules
 import turtle
 import time
@@ -26,7 +35,7 @@ head.direction = "stop"
 
 #food in the game
 food = turtle.Turtle()
-colors = random.choice(['red','blue','pink'])
+colors = random.choice(['red','orange','yellow'])
 shapes = random.choice(['square', 'circle', 'triangle'])
 food.speed(0)
 food.shape(shapes)
@@ -42,8 +51,7 @@ pen.color("white")
 pen.penup()
 pen.hideturtle()
 pen.goto(0, 250)
-pen.write("Score: 0    High Score: 0", align="center",
-          font=("Times New Roman", 24, "bold"))
+pen.write("Movements: A,S,W,D press any to start", align="center",font=("Times New Roman", 24, "bold"))
 
 #assigning key for movements
 
@@ -97,11 +105,11 @@ while True:
         shapes = random.choice(['triangle', 'square', 'circle'])
         for segment in segments:
             segment.goto(1000, 1000)
-        segment.clear()
+        segments.clear()
         score = 0
         delay = 0.1
         pen.clear()
-        pen.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Times New Roman", 24, "bold"))
+        pen.write("GAME OVER! Try again? press A,S,W,D", align="center", font=("Times New Roman", 24, "bold"))
 
     if head.distance(food) < 20:
         x = random.randint(-270, 270)
@@ -110,16 +118,16 @@ while True:
 
         new_segment = turtle.Turtle()
         new_segment.speed(0)
-        new_segment.shape("circle")
+        new_segment.shape("circle") #head color
         new_segment.color("blue") #tail color
         new_segment.penup()
         segments.append(new_segment)
         delay -= 0.001
-        score += 10
+        score += 1
         if score > high_score:
             high_score = score
         pen.clear()
-        pen.write("Score: {}  High Score: {}".format(score, high_score), align="center",font=("Times New Roman", 24, "bold"))
+        pen.write("Score: {}  Highest Score: {}".format(score, high_score), align="center",font=("Times New Roman", 24, "bold"))
 
     for index in range(len(segments) - 1, 0, -1):
         x = segments[index - 1].xcor()
@@ -146,7 +154,8 @@ while True:
             score = 0
             delay = 0.1
             pen.clear()
-            pen.write("Score: {}  High Score: {}".format(score, high_score), align="center",font=("Times New Roman", 24, "bold"))
+            pen.write("Score: {}  Highest Score: {}".format(score, high_score), align="center",font=("Times New Roman", 24, "bold"))
     time.sleep(delay)
 
 wn.mainloop()
+
